@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doe via Pix</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex; 
+    height: 100vh; 
+    justify-content: center; 
+    align-items: center; 
+    background: #f0f0f0;
+    margin: 0;
+  }
+  .container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  button {
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    background: #007e33;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background: #005c23;
+  }
+  .msg {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Doe via Pix</h2>
+    <button id="copyBtn">Copiar Pix</button>
+    <div id="msg" class="msg"></div>
+  </div>
+
+  <script>
+    const pixKey = "agiotacrente200x@gmail.com";
+
+    const btn = document.getElementById("copyBtn");
+    const msg = document.getElementById("msg");
+
+    btn.addEventListener("click", () => {
+      navigator.clipboard.writeText(pixKey).then(() => {
+        msg.textContent = "Pix copiado! Pode colar para doar :)";
+        setTimeout(() => msg.textContent = "", 3000);
+      }).catch(() => {
+        msg.textContent = "Erro ao copiar, tente manualmente.";
+        setTimeout(() => msg.textContent = "", 3000);
+      });
+    });
+  </script>
+</body>
+</html>
